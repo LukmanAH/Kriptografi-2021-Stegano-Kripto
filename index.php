@@ -204,7 +204,7 @@ function steg_hide($maskfile, $hidefile)
 	}
 
 	// output modified image as PNG (or other *LOSSLESS* format)
-	$nama_gambar = rand(0, 100) . "encoded.jpeg";
+	$nama_gambar = rand(1000, 10000) . "encoded.jpeg";
 	header("Content-Type: application/octet-stream");
 	header("Content-Disposition: attachment; filename=$nama_gambar");
 	header('Content-Transfer-Encoding: binary');
@@ -294,8 +294,8 @@ if (!empty($_POST['secret'])) {
 	$extension = strtolower(substr($_FILES['maskfile']['name'], -3));
 	if ($extension == "jpg") {
 		// esnkripsi Vigenere
-		$key = $_POST['key'];
-		$key = strtoupper($key);
+		$tes = $_POST['key'];
+		$key = strtoupper($tes);
 		$plaintext = $_POST['secret'];
 		$plaintext = strtoupper($plaintext);
 
@@ -344,8 +344,8 @@ if (!empty($_POST['secret'])) {
 			<div class="nav-tabs-custom">
 
 				<ul class="nav nav-tabs pull-right" style="background-color:#95a5a6; ">
-					<li><a href="#tab_1" class="btn btn-app" data-toggle="tab" style="width: 298;"><i class="fa fa-unlock"></i> Dekripsi</a> </li>
-					<li class="active"><a style="width: 298;" href="#tab_2" class="btn btn-app" data-toggle="tab"><i class="fa fa-lock"></i> Enkripsi</a></li>
+					<li><a href="#tab_1" class="btn btn-app" data-toggle="tab" style="width: 297;"><i class="fa fa-unlock"></i> Dekripsi</a> </li>
+					<li class="active"><a style="width: 297;" href="#tab_2" class="btn btn-app" data-toggle="tab"><i class="fa fa-lock"></i> Enkripsi</a></li>
 				</ul>
 
 				<?php
@@ -361,7 +361,6 @@ if (!empty($_POST['secret'])) {
 					$plaintext = Decode_vigenere($base64, $key);
 
 					echo "
-					<div>
 					<h2 align=center>Hasil</h2>
 		<table border=0 class='table table-bordered' style='font-size:large'>
 
@@ -394,10 +393,9 @@ if (!empty($_POST['secret'])) {
 			</tr>
 
 			<tr>
-				<td align=center><textarea class='form-control'><font color='red'>$plaintext</font></textarea></td>
+				<td align=center><textarea class='form-control'> $plaintext </textarea> </td>
 			</tr>
 		</table>
-		</div>
 	";
 				}
 				?>
